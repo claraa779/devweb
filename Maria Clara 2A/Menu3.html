@@ -8,6 +8,7 @@
 
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
     .calculator {
             max-width: 400px;
             margin: 50px auto;
@@ -20,6 +21,10 @@
             text-align: right;
             font-size: 2em;
             padding: 10px;
+        }
+        #DataHora{
+            font-family: "Oswald", sans-serif;
+            text-align: center;
         }       
 </style>
 <body>
@@ -40,9 +45,30 @@
         <h1>Página 3</h1>
     </header>
     <main>
+        <script>
+            function atual() {
+                const now = new Date();
+
+                // Formatar a data e hora no formato brasileiro
+                const day = String(now.getDate()).padStart(2, '0');
+                const month = String(now.getMonth() + 1).padStart(2, '0'); // Meses começam do zero
+                const year = now.getFullYear();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+
+                const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+                // Atualizar o conteúdo do elemento <h2> com o id "DataHora"
+                document.getElementById('DataHora').innerText = formattedDateTime;
+            }
+
+            // Configurar a atualização a cada segundo
+            setInterval(atual, 1000);
+
+  </script>
         <h2 id="DataHora">Hora aqui</h2>      
-        <button type="button" class="btn btn-danger" onclick="atual()">Click aqui</button>   
-       <script src="script.js" ></script>    
+            
        <section>
         <script src="calculadora.js" ></script> 
         <div class="container">
@@ -120,8 +146,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </section>
     </main>
-<footer>
-    Isto é um rodapé.
+<footer class="bg-danger">
+   &#169 clarinha do T.I.
 </footer>
     
 </body>
